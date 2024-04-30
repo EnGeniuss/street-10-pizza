@@ -11,18 +11,21 @@ export default function RegisterPage() {
     async function handleFormSubmit(ev) {
         ev.preventDefault();
         setCreatingUser(true);
-        try {
-            await fetch('/api/register', {
-                method:'POST',
-                body: JSON.stringify({email, password}),
-                headers:{'Content-Type': 'application/json'}
-            });
-            setCreatingUser(false);
+        setError(false);
+        setUserCreated(false);
+        const response = await fetch('/api/register', {
+            method:'POST',
+            body: JSON.stringify({email, password}),
+            headers:{'Content-Type': 'application/json'}
+        });
+        if (response.ok) {
             setUserCreated(true);
-            
-        } catch (error) {
-            setError(true);
         }
+        else {
+            setError(true);
+            console.log(error);
+        }
+        setCreatingUser(false);
     }
     
     return(
@@ -39,7 +42,7 @@ export default function RegisterPage() {
             )}
             {error && (
                 <div className="my-4 text-center">
-                Error occured. <br/> 
+                Error occurred. <br/> 
                 Please try again later. 
             </div>
             )}
@@ -59,7 +62,13 @@ export default function RegisterPage() {
                 <button className=" flex gap-4 justify-center items-center">
                     <Image src={'/google.png'} alt={''} width={24} height={24}/>
                     Login with google
-                    </button>
+                </button>
+                <div className="text-center my-4 text-gray-500">
+                    Existing account?{' '}
+                    <Link className="underline" href={'/login'}>
+                        Login here &raquo;
+                    </Link>
+                </div>
             </form>
 
         </section>
