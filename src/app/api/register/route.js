@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 export async function POST(req) {
     const body = await req.json();
-    mongoose.connect("mongodb://localhost:27017/food-app",{
+    mongoose.connect(process.env.MONGODB_URI,{
         useNewUrlParser: true,
         useUnifiedTopology: true,
         serverSelectionTimeoutMS: 5000,

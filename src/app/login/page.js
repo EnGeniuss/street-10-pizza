@@ -34,7 +34,7 @@ export default function LoginPage() {
                     or login with your provider
                 </div>
             </form>
-                <button onClick={()=> signIn("google",{callbackUrl: '/'})} className=" max-w-xs mx-auto flex gap-4 justify-center items-center">
+                <button onClick={()=> signIn('google',{callbackUrl: '/'})} className=" max-w-xs mx-auto flex gap-4 justify-center items-center">
                     <Image src={'/google.png'} alt={''} width={24} height={24}/>
                     Login with google
                 </button>

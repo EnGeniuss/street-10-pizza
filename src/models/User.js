@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import { Schema, models, model } from "mongoose";
 
 const UserSchema = new Schema({
+    name:{type: String},
     email:{type: String, 
             required: true,
             unique: true},
@@ -14,6 +15,7 @@ const UserSchema = new Schema({
             }
         },
     },
+    image: {type: String},
 }, {timestamps:true});
     UserSchema.post('validate', function(user){
         const notHashedPassword=user.password;
