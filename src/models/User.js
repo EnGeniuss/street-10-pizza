@@ -16,12 +16,6 @@ const UserSchema = new Schema({
         },
     },
     image: {type: String},
-    phone: {type: String},
-    streetAddress: {type: String},
-    postalCode: {type: String},
-    city: {type: String},
-    country: {type: String},
-
 }, {timestamps:true});
 
     UserSchema.post('validate', function(user){
