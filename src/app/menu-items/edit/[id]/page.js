@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import MenuItemForm from "@/components/layout/MenuItemForm";
+import DeleteButton from "@/components/icons/DeleteButton";
 
 export default function EditMenuItemPage() {
     const {id} = useParams();
@@ -46,6 +47,24 @@ export default function EditMenuItemPage() {
         return router.push('/menu-items');
     }
 
+    async function handleDeleteClick() {
+        const promise = new Promise(async (resolve, reject) => {
+           const res = await fetch('/api/menu-items?_id='+id, {
+                method: 'DELETE',
+        });
+        if (res.ok) 
+                resolve();
+            else 
+                reject();
+        });
+        await toast.promise(promise, {
+            loading: 'Deleting...',
+            success:'Deleted!',
+            error: (error) => `Error: ${error.message}`,
+        });
+        return router.push('/menu-items');
+    }
+
     if (loading) {
         return 'Loading user info...';
     }
@@ -55,13 +74,23 @@ export default function EditMenuItemPage() {
     return (
         <section className="mt-8">
             <UserTabs isAdmin={true}/>
-            <div className="max-w-md mx-auto mt-8">
+            <div className="max-w-2xl mx-auto mt-8">
                 <Link href={'/menu-items'} className="button">
                 <Left/>
                 <span>Show all menu items</span>
                 </Link>
             </div>
             <MenuItemForm menuItem={menuItem} onSubmit={handleFormSubmit}/>
+            <div className="max-w-md mx-auto mt-2">
+                <div className="max-w-xs ml-auto pl-4">
+                    <DeleteButton 
+                        label="Delete Menu"
+                        onDelete={handleDeleteClick}/>
+                    {/* <button onClick={handleDeleteClick}>
+                        Delete Menu
+                    </button> */}
+                </div>
+            </div>
         </section>
     );
 }

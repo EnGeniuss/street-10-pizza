@@ -26,7 +26,7 @@ export default function MenuItemsPage() {
         return router.push('/login')
     }
     return (
-        <section className="mt-8 max-w-md mx-auto">
+        <section className="mt-8 max-w-2xl mx-auto">
             <UserTabs isAdmin={true} />
             <div className="mt-8">
                 <Link

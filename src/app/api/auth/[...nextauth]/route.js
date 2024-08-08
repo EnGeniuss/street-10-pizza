@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import { User } from "@/models/User";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "src/libs/mongoConnect";
+import clientPromise from "@/models/libs/mongoConnect";
 
 export const authOptions = {
   secret: process.env.SECRET,
