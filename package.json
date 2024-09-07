@@ -19,7 +19,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
-    "uniqid": "^5.4.0"
+    "uniqid": "^5.4.0",
+    "updated-react-flying-item": "^1.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

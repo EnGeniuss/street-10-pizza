@@ -3,6 +3,8 @@ import { CartContext } from "../AppContext";
 import toast from "react-hot-toast";
 import MenuItemTile from "./MenuItemTile";
 import Image from "next/image";
+import FlyingButton from "updated-react-flying-item";
+import { resolve } from "styled-jsx/css";
 
 export default function MenuItem(menuItem) {
     const {
@@ -28,15 +30,15 @@ export default function MenuItem(menuItem) {
             selectedPrice += topping.price;
         }
     }
-    function handleAddToCartButtonClick() {
+    async function handleAddToCartButtonClick() {
             const hasOptions = sizes.length > 0 && toppingsPrice.length > 0;
             if (hasOptions && !showPopUp) {
                 setShowPopUp(true);
                 return;
             }
                 addToCart(menuItem, selectedSize, selectedToppings);
+                await new Promise(resolve => setTimeout(resolve, 1000));
                 setShowPopUp(false);
-                toast.success('Added to cart!');
                 reset();
 
             };
@@ -110,12 +112,18 @@ export default function MenuItem(menuItem) {
                                     ))}
                                 </div>
                             )}
-                            <button 
-                                onClick={handleAddToCartButtonClick}
-                                className="primary sticky bottom-2"
-                                type="button">
-                                    Add to cart ${selectedPrice}
-                            </button>
+                            <FlyingButton
+                                targetTop={'10%'}
+                                targetLeft={'95%'}
+                                src={image}>
+                                <div 
+                                    onClick={handleAddToCartButtonClick}
+                                    className="primary sticky bottom-2"
+                                    >
+                                        Add to cart ${selectedPrice}
+                                </div>
+                            </FlyingButton>
+
                         </div>
                     </div>
                 </div>

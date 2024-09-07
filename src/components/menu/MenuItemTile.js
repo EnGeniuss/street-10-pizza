@@ -11,8 +11,10 @@ export default function MenuItemTile({onAddToCart, ...item}) {
             <h4 className="font-semibold my-3 text-xl">{name}</h4>
             <p className="text-gray-500 text-sm line-clamp-3">{description}</p>
             <AddToCartButton 
+                image={image}
                 hasSizesOrToppings={hasSizesOrToppings}
-                onClick={onAddToCart}/>
+                onClick={onAddToCart}
+                basePrice={basePrice}/>
         </div>
     );
 }
