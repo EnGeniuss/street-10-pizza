@@ -10,7 +10,7 @@ export default function MenuItemForm({onSubmit, menuItem}) {
     const [basePrice, setBasePrice] = useState(menuItem?.basePrice || '');
     // State to manage the list of pizza sizes
     const [sizes, setSizes] = useState(menuItem?.sizes || []);
-    const [selectCat, setSelectCat] = useState(menuItem?.category || '');
+    const [category, setCategory] = useState(menuItem?.category || '');
     const [categories, setCategories] = useState([]);
     const [toppingsPrice,setToppingsPrice] = useState(menuItem?.toppingsPrice || [])
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function MenuItemForm({onSubmit, menuItem}) {
         <form 
             onSubmit={ev =>
                 onSubmit(ev,{
-                    image, name, description, selectCat, basePrice, sizes,toppingsPrice
+                    image, name, description, category, basePrice, sizes, toppingsPrice
                 })
             } 
             className="mt-8 max-w-2xl mx-auto">
@@ -49,7 +49,7 @@ export default function MenuItemForm({onSubmit, menuItem}) {
                             onChange={ev =>setDescription(ev.target.value)}
                         />
                         <label>Category</label>
-                        <select value={selectCat} onChange={ev => setSelectCat(ev.target.value)}>
+                        <select value={category} onChange={ev => setCategory(ev.target.value)}>
                             {categories?.length > 0 && categories.map(c =>(
                                 <option value={c._id}>{c.name}</option>
                             ))}

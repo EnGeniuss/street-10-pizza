@@ -1,9 +1,7 @@
 'use client';
 import checkProfile from "@/components/CheckProfile";
 import Left from "@/components/icons/Left";
-import EditableImage from "@/components/layout/EditableImage";
 import UserTabs from "@/components/layout/UserTabs";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

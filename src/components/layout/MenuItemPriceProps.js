@@ -48,7 +48,7 @@ export default function MenuItemPriceProps({title, name,addLabel,props,setProps}
                         <label>{name}</label>
                             <input 
                                 type="text" 
-                                placeholder="Size name" 
+                                placeholder={name} 
                                 value={size.name}
                                 onChange={ev => editProps(ev, index, 'name')}
                             />

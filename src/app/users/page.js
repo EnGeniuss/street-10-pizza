@@ -23,7 +23,6 @@ export default function UsersPage() {
     }
     return(
         <section className="mt-8 max-w-2xl mx-auto">
-            test
             <UserTabs isAdmin={true}/>
             <div className="mt-8">
                 {users?.length > 0 && users.map(user => (
